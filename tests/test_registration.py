@@ -39,6 +39,32 @@ class TestRegistration:
         assert 'https://qa-desk.education-services.ru' in driver.current_url #вообще-то не переходит на "главную", в урле остается указание на стр регистрации /registration
 
 
+    def test_registration_wrong_template_email(self, driver):
+        reg_btn = WebDriverWait(driver, 20).until(expected_conditions.visibility_of_element_located(DeskLocators.REGISTRATION_BTN))
+        
+        assert reg_btn.is_displayed() is True
+        assert reg_btn.is_enabled() is True
+        reg_btn.click()
+        no_account = WebDriverWait(driver, 20).until(expected_conditions.visibility_of_element_located(DeskLocators.NO_ACCOUNT_BTN))
+                
+        assert no_account.is_displayed() is True
+        assert no_account.is_enabled() is True
+        no_account.click()
+
+        email_input = WebDriverWait(driver,20).until(expected_conditions.visibility_of_element_located(DeskLocators.EMAIL))
+        email_input.send_keys(data.WRONG_EMAIL_TEMPLATE)
+        driver.find_element(*DeskLocators.PASSWORD).send_keys(data.PASSWORD_EXIST_USER)
+        driver.find_element(*DeskLocators.SUBMIT_PASSWORD).send_keys(data.PASSWORD_EXIST_USER)
+        driver.find_element(*DeskLocators.CREATE_ACC_BTN).click()
+
+        msg = WebDriverWait(driver, 20).until(expected_conditions.visibility_of_element_located(DeskLocators.ERROR_MSG))
+        assert msg.is_displayed()
+        assert driver.find_element(*DeskLocators.EMAIL_FIELD_BORDER).value_of_css_property('border-color') == "rgb(255, 105, 114)"
+        assert driver.find_element(*DeskLocators.SUBMIT_PASS_FIELD_BORDER).value_of_css_property('border-color') == "rgb(255, 105, 114)"
+
+
+        
+    
     def test_registration_existed_user(self,driver):
         reg = WebDriverWait(driver, 20).until(expected_conditions.visibility_of_element_located(DeskLocators.REGISTRATION_BTN))
 
