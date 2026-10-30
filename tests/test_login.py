@@ -22,4 +22,4 @@ class TestLogin:
         
         assert avatar.is_displayed() is True
         assert 'User' in user_name.text
-        assert 'https://qa-desk.education-services.ru' in driver.current_url
+        assert 'https://qa-desk.education-services.ru' in driver.current_url #вообще-то не переходит на "главную", в урле остается указание на стр входа /signin
