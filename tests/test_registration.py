@@ -36,6 +36,7 @@ class TestRegistration:
 
         assert avatar.is_displayed() is True
         assert 'User' in user_name.text
+        assert 'https://qa-desk.education-services.ru' in driver.current_url
 
 
     def test_registration_existed_user(self,driver):
