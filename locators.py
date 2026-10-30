@@ -18,4 +18,5 @@ class DeskLocators:
     SUBMIT_PASS_FIELD_BORDER = By.XPATH, "//input[@name='submitPassword']/parent::div"
     LOGIN_BTN = By.XPATH, "//button[@type='submit' and text()='Войти']"
 
+
                     
