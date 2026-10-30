@@ -13,5 +13,8 @@ class DeskLocators:
     USER_AVATAR = By.XPATH, "//button[@class='circleSmall']"
     USER_NAME = By.XPATH, "//*[@class='profileText name']"
     ERROR_MSG = By.XPATH, "//span[contains(@*, 'input_span') and text()='Ошибка']"
+    EMAIL_FIELD_BORDER = By.XPATH, "//input[@name='email']/parent::div"
+    PASSWORD_FIELD_BORDER = By.XPATH, "//input[@name='password']/parent::div"
+    SUBMIT_PASS_FIELD_BORDER = By.XPATH, "//input[@name='submitPassword']/parent::div"
 
                     

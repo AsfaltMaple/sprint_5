@@ -58,5 +58,11 @@ class TestRegistration:
         driver.find_element(*DeskLocators.CREATE_ACC_BTN).click()
 
         msg = WebDriverWait(driver, 20).until(expected_conditions.visibility_of_element_located(DeskLocators.ERROR_MSG))
+        email_error_border = WebDriverWait(driver, 20).until(expected_conditions.visibility_of_element_located(DeskLocators.EMAIL_FIELD_BORDER))
+        password_field_border = WebDriverWait(driver, 20).until(expected_conditions.visibility_of_element_located(DeskLocators.PASSWORD_FIELD_BORDER))
+        submit_pass_field_border = WebDriverWait(driver, 20).until(expected_conditions.visibility_of_element_located(DeskLocators.SUBMIT_PASS_FIELD_BORDER))
 
         assert msg.is_displayed()
+        assert email_error_border.value_of_css_property('border-color') == "rgb(255, 105, 114)"
+        assert password_field_border.value_of_css_property('border-color') == "rgb(255, 105, 114)"
+        assert submit_pass_field_border.value_of_css_property('border-color') == "rgb(255, 105, 114)"
