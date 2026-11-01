@@ -10,6 +10,7 @@ class DeskLocators:
     LOGIN_BTN = By.XPATH, "//button[@type='submit' and text()='Войти']"
     CREATE_ADV_BTN = By.XPATH, "//button[text()='Разместить объявление']"
     PUBLISH_BTN = By.XPATH, "//button[@type ='submit' and text()='Опубликовать']"
+    EDIT_ADV = By.CSS_SELECTOR, ".editButton"
     
     #инпуты
     EMAIL = By.XPATH, ".//input[@name='email']"

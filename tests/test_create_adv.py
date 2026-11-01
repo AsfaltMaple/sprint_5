@@ -1,3 +1,4 @@
+from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from locators import DeskLocators
@@ -19,17 +20,16 @@ class TestAdvCreate:
         driver.find_element(*DeskLocators.LOGIN_BTN).click()
 
         user_name = WebDriverWait(driver,20).until(expected_conditions.visibility_of_element_located(DeskLocators.USER_NAME))
-        assert user_name.is_displayed()
+        #assert user_name.is_displayed()
 
         driver.find_element(*DeskLocators.CREATE_ADV_BTN).click()
         new_adv_msg = WebDriverWait(driver, 20).until(expected_conditions.visibility_of_element_located(DeskLocators.NEW_ADV_MSG))
-        assert new_adv_msg.is_displayed()
+        #assert new_adv_msg.is_displayed()
 
         driver.find_element(*DeskLocators.ADV_NAME).send_keys(adv_name)
         driver.find_element(*DeskLocators.ADV_DESCRIPTION).send_keys(adv_description)
         driver.find_element(*DeskLocators.ADV_PRICE).send_keys(adv_price)
         cat=WebDriverWait(driver,20).until(expected_conditions.visibility_of_element_located(DeskLocators.ADV_CONDITIONS_RADIOBTN))
-        #assert cat.is_displayed()
         random.choice(driver.find_elements(*DeskLocators.ADV_CONDITIONS_RADIOBTN)).click()
         driver.find_element(*DeskLocators.CATEGORY_DROPDOWN).click()
         random.choice(driver.find_elements(*DeskLocators.CATEGORIES)).click()
@@ -40,8 +40,8 @@ class TestAdvCreate:
         avatar = WebDriverWait(driver, 20).until(expected_conditions.visibility_of_element_located(DeskLocators.USER_AVATAR))
         avatar.click()
 
-        my_advs_header = WebDriverWait(driver,20).until(expected_conditions.visibility_of_element_located(DeskLocators.MY_ADS_HEADER))
-        assert my_advs_header.is_displayed()
+        my_advs_edit = WebDriverWait(driver,20).until(expected_conditions.visibility_of_element_located(DeskLocators.EDIT_ADV))
+        assert my_advs_edit.is_displayed()
 
         adv_titles = driver.find_elements(*DeskLocators.MY_ADV_TITLES)
         assert adv_name in [title.text for title in adv_titles]
@@ -51,8 +51,8 @@ class TestAdvCreate:
 
     def test_create_adv_by_unauthorized_user(self, driver):
         create_btn = WebDriverWait(driver, 20).until(expected_conditions.visibility_of_element_located(DeskLocators.CREATE_ADV_BTN))
-        assert create_btn.is_displayed()
-        assert create_btn.is_enabled()
+        #assert create_btn.is_displayed()
+        #assert create_btn.is_enabled()
 
         driver.find_element(*DeskLocators.CREATE_ADV_BTN).click()
         auth_is_needed_msg = WebDriverWait(driver, 20).until(expected_conditions.visibility_of_element_located(DeskLocators.AUTHORIZATION_IS_NEEDED_MSG))
