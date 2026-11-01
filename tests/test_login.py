@@ -21,5 +21,5 @@ class TestLogin:
         user_name = WebDriverWait(driver, 20).until(expected_conditions.visibility_of_element_located(DeskLocators.USER_NAME))
         
         assert avatar.is_displayed() is True
-        assert 'User' in user_name.text
-        assert 'https://qa-desk.education-services.ru' in driver.current_url #вообще-то не переходит на "главную", в урле остается указание на стр входа /signin
+        assert data.MY_USER_NAME in user_name.text
+        assert data.URL in driver.current_url #вообще-то не переходит на "главную", в урле остается указание на стр входа /signin
