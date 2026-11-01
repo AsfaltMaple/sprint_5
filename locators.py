@@ -10,7 +10,10 @@ class DeskLocators:
     LOGIN_BTN = By.XPATH, "//button[@type='submit' and text()='Войти']"
     CREATE_ADV_BTN = By.XPATH, "//button[text()='Разместить объявление']"
     PUBLISH_BTN = By.XPATH, "//button[@type ='submit' and text()='Опубликовать']"
+    #"//button[@type ='submit']"
+    #"//button[@type ='submit' and text()='Опубликовать']"
     EDIT_ADV = By.CSS_SELECTOR, ".editButton"
+    NEXT_PAGE = By.XPATH, "//button[contains(@*, 'right')]"
     
     #инпуты
     EMAIL = By.XPATH, ".//input[@name='email']"
@@ -32,7 +35,9 @@ class DeskLocators:
     AUTHORIZATION_IS_NEEDED_MSG = By.XPATH, "//h1[text()='Чтобы разместить объявление, авторизуйтесь']" 
     NEW_ADV_MSG =By.XPATH, "//h1[text()='Новое объявление']"
     MY_ADS_HEADER = By.XPATH, "//h1[text()='Мои объявления']"
-    MY_ADV_TITLES = By.XPATH, "//h2[@class='h2']"
+    MY_ADV_TITLES = (By.CSS_SELECTOR, "div.description div.about h2.h2")
+    
+    #"(//h2[@class='h2'])"
 
 
     #радиокнопки (обе) выбора состояния товара

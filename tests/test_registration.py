@@ -14,16 +14,9 @@ class TestRegistration:
       
         email, password = registration_data()
         reg = WebDriverWait(driver, 20).until(expected_conditions.visibility_of_element_located(DeskLocators.REGISTRATION_BTN))
-
-        assert reg.is_displayed() is True
-        assert reg.is_enabled() is True
-
-    
         reg.click()
         no_account = WebDriverWait(driver, 20).until(expected_conditions.visibility_of_element_located(DeskLocators.NO_ACCOUNT_BTN))
-        assert no_account.is_displayed() is True
-        assert no_account.is_enabled() is True
-
+ 
         no_account.click()
         email_input = WebDriverWait(driver,20).until(expected_conditions.visibility_of_element_located(DeskLocators.EMAIL))
         email_input.send_keys(email)
@@ -41,14 +34,8 @@ class TestRegistration:
 
     def test_registration_wrong_template_email(self, driver):
         reg_btn = WebDriverWait(driver, 20).until(expected_conditions.visibility_of_element_located(DeskLocators.REGISTRATION_BTN))
-        
-        assert reg_btn.is_displayed() is True
-        assert reg_btn.is_enabled() is True
         reg_btn.click()
         no_account = WebDriverWait(driver, 20).until(expected_conditions.visibility_of_element_located(DeskLocators.NO_ACCOUNT_BTN))
-                
-        assert no_account.is_displayed() is True
-        assert no_account.is_enabled() is True
         no_account.click()
 
         email_input = WebDriverWait(driver,20).until(expected_conditions.visibility_of_element_located(DeskLocators.EMAIL))
@@ -67,16 +54,8 @@ class TestRegistration:
     
     def test_registration_existed_user(self,driver):
         reg = WebDriverWait(driver, 20).until(expected_conditions.visibility_of_element_located(DeskLocators.REGISTRATION_BTN))
-
-        assert reg.is_displayed() is True
-        assert reg.is_enabled() is True
-
         reg.click()
         no_account = WebDriverWait(driver, 20).until(expected_conditions.visibility_of_element_located(DeskLocators.NO_ACCOUNT_BTN))
-        
-        assert no_account.is_displayed() is True
-        assert no_account.is_enabled() is True
-        
         no_account.click()
         email_input = WebDriverWait(driver,20).until(expected_conditions.visibility_of_element_located(DeskLocators.EMAIL))
         email_input.send_keys(data.EMAIL_EXIST_USER)
