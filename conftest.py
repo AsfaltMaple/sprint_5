@@ -1,9 +1,11 @@
 import pytest
+import data
 from selenium import webdriver
+
 
 @pytest.fixture(scope='function')
 def driver():
     driver = webdriver.Chrome()
-    driver.get("https://qa-desk.education-services.ru/")
+    driver.get(data.URL)
     yield driver
     driver.quit()

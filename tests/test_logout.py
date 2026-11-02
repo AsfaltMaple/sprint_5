@@ -18,7 +18,7 @@ class TestLogout:
        
         driver.find_element(*DeskLocators.LOGOUT_BTN).click()
         login_btn = WebDriverWait(driver, 20).until(expected_conditions.visibility_of_element_located(DeskLocators.REGISTRATION_BTN))
-        #avatar = WebDriverWait
+    
 
         assert login_btn
         assert not driver.find_elements(*DeskLocators.USER_AVATAR)
